@@ -23,8 +23,7 @@ Ytrain = Xtrain['type']
 Xtrain['type'].replace(['Ghoul','Goblin','Ghost'],[0,1,2],inplace=True)
 Xtrain.pop('type')
 Xtrain.pop('id')
-Xtrain.pop('color')
-#Xtrain = pd.get_dummies(Xtrain,columns=['color'])
+Xtrain = pd.get_dummies(Xtrain,columns=['color'])
 Ytrain = pd.np.array(Ytrain)
 Xtrain = pd.np.array(Xtrain)
 
@@ -47,9 +46,12 @@ Xtrain = pd.np.array(Xtrain)
 Xtest = pd.read_csv("test.csv")
 idList = Xtest['id']
 Xtest.pop('id')
-Xtest.pop('color')
-#Xtest = pd.get_dummies(Xtest,columns=['color'])
+Xtest = pd.get_dummies(Xtest,columns=['color'])
 Xtest = pd.np.array(Xtest)
+
+#model = sm.OLS(Ytrain,Xtrain)
+#result = model.fit()
+#preds = result.predict(Xtest)
 
 logistic = linear_model.LogisticRegression()
 logistic.fit(Xtrain, Ytrain)
@@ -60,7 +62,7 @@ preds = df1['labels'].tolist()
 results = [[0 for x in range(2)] for x in range(len(preds))]
 for index in range(0,len(preds)):
 	results[index][0] = idList[index]
-	results[index][1] = preds[index]
+	results[index][1] = int(round(preds[index]))
 
 results = pd.np.array(results)
 with open("result.csv", "wb") as f:
