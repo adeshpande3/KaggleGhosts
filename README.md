@@ -1,4 +1,6 @@
 # KaggleGhosts
 Kaggle Ghosts ML Competition 
 
-Logistic regression approach gets a **71.65%** accuracy
+SVM - **73.35%** 
+
+Logistic regression - **71.65%** 
