@@ -27,7 +27,7 @@ Xtrain = pd.get_dummies(Xtrain,columns=['color'])
 Ytrain = pd.np.array(Ytrain)
 Xtrain = pd.np.array(Xtrain)
 
-##################################################################################
+###################################################################################
 # If you want to run some cross validation with the training data
 
 #local_train, local_test = train_test_split(Xtrain,test_size=0.1,random_state=123)
@@ -41,7 +41,7 @@ Xtrain = pd.np.array(Xtrain)
 #preds = logistic.predict(local_test_x)
 #print (np.mean((preds) == local_test_y))
 
-##################################################################################
+###################################################################################
 
 Xtest = pd.read_csv("test.csv")
 idList = Xtest['id']
