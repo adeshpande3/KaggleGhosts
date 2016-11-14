@@ -21,11 +21,9 @@ Xtest=[] # Will contain the characteristic data for the monsters in the test set
 Xtrain = pd.read_csv("train.csv")
 Ytrain = Xtrain['type']
 Xtrain['type'].replace(['Ghoul','Goblin','Ghost'],[0,1,2],inplace=True)
-Xtrain.pop('type')
 Xtrain.pop('id')
 Xtrain = pd.get_dummies(Xtrain,columns=['color'])
-Ytrain = pd.np.array(Ytrain)
-Xtrain = pd.np.array(Xtrain)
+
 
 ###################################################################################
 # If you want to run some cross validation with the training data
@@ -43,6 +41,9 @@ Xtrain = pd.np.array(Xtrain)
 
 ###################################################################################
 
+Xtrain.pop('type')
+Ytrain = pd.np.array(Ytrain)
+Xtrain = pd.np.array(Xtrain)
 Xtest = pd.read_csv("test.csv")
 idList = Xtest['id']
 Xtest.pop('id')
@@ -65,6 +66,10 @@ for index in range(0,len(preds)):
 	results[index][1] = int(round(preds[index]))
 
 results = pd.np.array(results)
+firstRow = [[0 for x in range(2)] for x in range(1)]
+firstRow[0][0] = 'id'
+firstRow[0][1] = 'type'
 with open("result.csv", "wb") as f:
     writer = csv.writer(f)
+    writer.writerows(firstRow)
     writer.writerows(results)

@@ -23,7 +23,6 @@ Xtrain = pd.read_csv("train.csv")
 Ytrain = Xtrain['type']
 Xtrain['type'].replace(['Ghoul','Goblin','Ghost'],[0,1,2],inplace=True)
 Xtrain.pop('id')
-#Xtrain = pd.get_dummies(Xtrain,columns=['color'])
 
 
 ###################################################################################
@@ -50,7 +49,6 @@ Xtest = pd.read_csv("test.csv")
 idList = Xtest['id']
 Xtest.pop('id')
 Xtest.pop('color')
-#Xtest = pd.get_dummies(Xtest,columns=['color'])
 Xtest = pd.np.array(Xtest)
 
 #model = sm.OLS(Ytrain,Xtrain)
@@ -69,7 +67,9 @@ for index in range(0,len(preds)):
 	results[index][1] = preds[index]
 
 results = pd.np.array(results)
-firstRow = ['id','type']
+firstRow = [[0 for x in range(2)] for x in range(1)]
+firstRow[0][0] = 'id'
+firstRow[0][1] = 'type'
 with open("result.csv", "wb") as f:
     writer = csv.writer(f)
     writer.writerows(firstRow)
