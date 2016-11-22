@@ -38,6 +38,7 @@ Xtrain.pop('id')
 #logistic.fit(local_train_x, local_train_y)
 #preds = logistic.predict(local_test_x)
 #print (np.mean((preds) == local_test_y))
+#sys.exit()
 
 ###################################################################################
 
