@@ -56,7 +56,7 @@ Xtest = pd.np.array(Xtest)
 #result = model.fit()
 #preds = result.predict(Xtest)
 
-logistic = svm.SVC()
+logistic = svm.SVC(C=1, gamma=.1)
 logistic.fit(Xtrain, Ytrain)
 preds = logistic.predict(Xtest)
 df1 = pd.DataFrame({'labels': preds})
