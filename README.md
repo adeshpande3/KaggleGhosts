@@ -1,6 +1,10 @@
 # KaggleGhosts
 Kaggle Ghosts ML Competition 
 
-SVM - **73.35%** 
+Finished 411th/729
+
+The iPython notebook has some data visualizations
+
+SVM - **73.54%** 
 
 Logistic regression - **71.65%** 
